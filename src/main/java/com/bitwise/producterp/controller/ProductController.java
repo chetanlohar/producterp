@@ -36,9 +36,9 @@ public class ProductController {
         return new ResponseEntity<>(l,HttpStatus.OK);
     }
 
-    @RequestMapping(value = ServiceUrls.ADD, method = RequestMethod.POST, consumes = "application/json")
+    @RequestMapping(value = ServiceUrls.ADD, method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     public @ResponseBody ResponseEntity<String> addProduct(ProductEntity product){
-        erpLogger.info(product.toString());
+        erpLogger.info("=================>>>>>>>>>>>>>>>>>"+ product.toString());
         return new ResponseEntity<>("=====>>>>>>> Product '"+product.getProductName()+"' added Successfully"
                 ,HttpStatus.OK);
     }

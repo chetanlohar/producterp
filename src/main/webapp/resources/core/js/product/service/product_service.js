@@ -20,6 +20,7 @@ productApp.factory('ProductDetailsService',['$http', '$q',function($http,$q){
         },
         addProduct:function(product){
             var deferred = $q.defer();
+            console.log("prod: "+product.productId+":"+product.productName)
             $http.post(REST_SERVICE_URI+"/product/add",product)
                 .then(
                 function (response) {

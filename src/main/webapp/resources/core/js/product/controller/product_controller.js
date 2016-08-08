@@ -16,9 +16,8 @@ productApp.controller('ProductController',function($scope,ProductDetailsService)
         );
         }
     $scope.addProduct = function(product){
-       var jsonProduct = angular.toJson(product)
-       console.log('====>>> From Controller: addProduct->> '+jsonProduct);
-       ProductDetailsService.addProduct(jsonProduct)
+       console.log('====>>> From Controller: addProduct->> '+product);
+       ProductDetailsService.addProduct({productId: product.productId, productName:product.productName})
        .then(
            function(message) {
                console.log("message:"+message);
