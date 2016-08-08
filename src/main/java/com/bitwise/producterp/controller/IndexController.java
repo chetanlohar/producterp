@@ -1,6 +1,7 @@
 package com.bitwise.producterp.controller;
 
 import com.bitwise.producterp.core.ServiceUrls;
+import com.bitwise.utility.ErpLogger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping(value = ServiceUrls.PRODUCT)
 public class IndexController {
-
-    @RequestMapping(value="/",method = RequestMethod.GET)
+    ErpLogger erpLogger = new ErpLogger(IndexController.class);
+    @RequestMapping(value={"","/"},method = RequestMethod.GET)
     public String productDetails(){
-        System.out.println("hi.... in ProductController... ");
+        erpLogger.warn("hi.... in ProductController... ");
         return "product/product";
     }
 }

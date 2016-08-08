@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-US" ng-app="productApp">
+<script src="/resources/core/js/config.js"></script>
 <script src="/resources/core/js/common/angular.js"></script>
 <script src="/resources/core/js/common/angular-resource.js"></script>
 <script src="/resources/core/js/product/product_app.js"></script>
