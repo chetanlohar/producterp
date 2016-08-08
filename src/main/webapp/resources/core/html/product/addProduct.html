@@ -1,0 +1,17 @@
+<div ng-init="message='message will print here'">
+    <form name="userForm" method="post" ng-submit="addProduct(product)">
+        <p>
+            <lable>Product Id:</lable>
+            <input type="text" ng-model="product.productId" />
+        </p>
+        <p>
+            <lable>Product Name:</lable>
+            <input type="text" name="productName" ng-model="product.productName" />
+        </p>
+        <p>
+            <input type="submit" value="ADD"/>
+        </p>
+        <!--<a href="http://localhost:8080/rest/user/{{name}}">Click Here</a>-->
+    </form>
+    <p>{{message}}</p>
+</div>

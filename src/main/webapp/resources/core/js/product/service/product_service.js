@@ -17,6 +17,20 @@ productApp.factory('ProductDetailsService',['$http', '$q',function($http,$q){
                 }
             );
             return deferred.promise;
+        },
+        addProduct:function(product){
+            var deferred = $q.defer();
+            $http.post(REST_SERVICE_URI+"/product/add",product)
+                .then(
+                function (response) {
+                    deferred.resolve(response.data);
+                },
+                function(errResponse){
+                    console.error('Service: Error while fetching Products');
+                    deferred.reject(errResponse);
+                }
+            );
+            return deferred.promise;
         }
     };
 }]);

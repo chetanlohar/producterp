@@ -11,8 +11,22 @@ productApp.controller('ProductController',function($scope,ProductDetailsService)
                 $scope.products = products;
             },
             function(errResponse){
-                console.error('Error while fetching Users');
+                console.error('Controller : Error while fetching Products');
             }
         );
         }
+    $scope.addProduct = function(product){
+       var jsonProduct = angular.toJson(product)
+       console.log('====>>> From Controller: addProduct->> '+jsonProduct);
+       ProductDetailsService.addProduct(jsonProduct)
+       .then(
+           function(message) {
+               console.log("message:"+message);
+               $scope.message = message;
+           },
+           function(errResponse){
+               console.error('Controller : Error while fetching Products');
+           }
+       );
+       }
     });

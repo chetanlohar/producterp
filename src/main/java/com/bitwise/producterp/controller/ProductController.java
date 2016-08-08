@@ -1,5 +1,6 @@
 package com.bitwise.producterp.controller;
 
+import com.bitwise.entity.ProductEntity;
 import com.bitwise.producterp.core.ServiceUrls;
 import com.bitwise.utility.ErpLogger;
 import com.fasterxml.jackson.databind.util.JSONPObject;
@@ -25,13 +26,21 @@ public class ProductController {
     ErpLogger erpLogger = new ErpLogger(ProductController.class);
 
     @RequestMapping(value = ServiceUrls.GET_ALL,method = RequestMethod.GET)
-    public @ResponseBody  ResponseEntity<List<String>> getProductDetails(){
+    public @ResponseBody  ResponseEntity<List<ProductEntity>> getProductDetails(){
         erpLogger.info("ProductController --> Get Product Details");
         String str = "{\"ID\":\"2800\"}";
-        List<String> l = new ArrayList<String>();
-        l.add("Ford Fiesta");
-        l.add("1.6 SXI Petrol");
-        return new ResponseEntity<List<String>>(l,HttpStatus.OK);
+        List<ProductEntity> l = new ArrayList<ProductEntity>();
+        l.add(new ProductEntity(1,"Samsung"));
+        l.add(new ProductEntity(2,"Apple"));
+        l.add(new ProductEntity(3,"Sony"));
+        return new ResponseEntity<>(l,HttpStatus.OK);
+    }
+
+    @RequestMapping(value = ServiceUrls.ADD, method = RequestMethod.POST, consumes = "application/json")
+    public @ResponseBody ResponseEntity<String> addProduct(ProductEntity product){
+        erpLogger.info(product.toString());
+        return new ResponseEntity<>("=====>>>>>>> Product '"+product.getProductName()+"' added Successfully"
+                ,HttpStatus.OK);
     }
 
 
