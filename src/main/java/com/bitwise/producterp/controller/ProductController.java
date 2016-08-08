@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,14 +25,16 @@ public class ProductController {
     ErpLogger erpLogger = new ErpLogger(ProductController.class);
 
     @RequestMapping(value = ServiceUrls.GET_ALL,method = RequestMethod.GET)
-    public ResponseEntity<List<String>> getProductDetails(){
-        erpLogger.warn("in getProductDetails..........=====>>>>");
+    public @ResponseBody  ResponseEntity<List<String>> getProductDetails(){
+        erpLogger.info("ProductController --> Get Product Details");
         String str = "{\"ID\":\"2800\"}";
         List<String> l = new ArrayList<String>();
         l.add("Ford Fiesta");
-        l.add("1.6 SXI Petorl");
+        l.add("1.6 SXI Petrol");
         return new ResponseEntity<List<String>>(l,HttpStatus.OK);
     }
+
+
 
 
 

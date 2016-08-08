@@ -5,6 +5,7 @@ package com.bitwise.producterp.core;
  */
 public class ServiceUrls {
 
+    public static final String HOME = "/home";
     /*Product URLS*/
     public static final String PRODUCT = "/product";
     public static final String GET_ALL="/get";

@@ -1,5 +1,5 @@
 configOptions = {
 
-  baseUrl:'http://webdart:7777/'
+  baseUrl:'http://bi-user1:7777/'
 
 }

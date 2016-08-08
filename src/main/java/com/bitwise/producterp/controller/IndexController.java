@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Created by chetanlo on 8/4/2016.
  */
 @Controller
-@RequestMapping(value = ServiceUrls.PRODUCT)
+@RequestMapping(value = ServiceUrls.HOME)
 public class IndexController {
     ErpLogger erpLogger = new ErpLogger(IndexController.class);
     @RequestMapping(value={"","/"},method = RequestMethod.GET)
-    public String productDetails(){
-        erpLogger.warn("hi.... in ProductController... ");
-        return "product/product";
+    public String showHome(){
+        erpLogger.info("hi.... in ProductController... ");
+        return "home";
     }
 }
