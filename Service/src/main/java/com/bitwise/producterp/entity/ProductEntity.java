@@ -1,4 +1,4 @@
-package com.bitwise.entity;
+package com.bitwise.producterp.entity;
 
 /**
  * Created by chetanlo on 8/8/2016.

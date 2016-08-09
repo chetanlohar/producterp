@@ -1,4 +1,4 @@
-package com.bitwise.utility;
+package com.bitwise.producterp.utility;
 
 import ch.qos.logback.classic.LoggerContext;
 import ch.qos.logback.classic.joran.JoranConfigurator;

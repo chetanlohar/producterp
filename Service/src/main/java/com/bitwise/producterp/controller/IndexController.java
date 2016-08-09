@@ -1,7 +1,7 @@
 package com.bitwise.producterp.controller;
 
 import com.bitwise.producterp.core.ServiceUrls;
-import com.bitwise.utility.ErpLogger;
+import com.bitwise.producterp.utility.ErpLogger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

@@ -1,4 +1,4 @@
-package com.bitwise.utility;
+package com.bitwise.producterp.utility;
 
 import org.junit.Before;
 import org.junit.Test;

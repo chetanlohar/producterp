@@ -1,13 +1,10 @@
 package com.bitwise.producterp.controller;
 
-import com.bitwise.entity.ProductEntity;
+import com.bitwise.producterp.entity.ProductEntity;
 import com.bitwise.producterp.core.ServiceUrls;
-import com.bitwise.utility.ErpLogger;
-import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.bitwise.producterp.utility.ErpLogger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -22,8 +19,8 @@ public class ProductController {
 
     ErpLogger erpLogger = new ErpLogger(ProductController.class);
 
-    @RequestMapping(value = ServiceUrls.GET_ALL,method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<List<ProductEntity>> getProductDetails(){
+    @RequestMapping(value = ServiceUrls.GET_ALL,method = RequestMethod.GET)
+    public @ResponseBody ResponseEntity<List<ProductEntity>> getProductDetails(){
         erpLogger.info("ProductController --> Get Product Details");
         String str = "{\"ID\":\"2800\"}";
         List<ProductEntity> l = new ArrayList<ProductEntity>();
