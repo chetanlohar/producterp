@@ -8,10 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,8 +22,8 @@ public class ProductController {
 
     ErpLogger erpLogger = new ErpLogger(ProductController.class);
 
-    @RequestMapping(value = ServiceUrls.GET_ALL,method = RequestMethod.GET)
-    public @ResponseBody  ResponseEntity<List<ProductEntity>> getProductDetails(){
+    @RequestMapping(value = ServiceUrls.GET_ALL,method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<List<ProductEntity>> getProductDetails(){
         erpLogger.info("ProductController --> Get Product Details");
         String str = "{\"ID\":\"2800\"}";
         List<ProductEntity> l = new ArrayList<ProductEntity>();
@@ -37,10 +34,9 @@ public class ProductController {
     }
 
     @RequestMapping(value = ServiceUrls.ADD, method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
-    public @ResponseBody ResponseEntity<String> addProduct(ProductEntity product){
+    public @ResponseBody ResponseEntity<String> addProduct(@RequestBody ProductEntity product){
         erpLogger.info("=================>>>>>>>>>>>>>>>>>"+ product.toString());
-        return new ResponseEntity<>("=====>>>>>>> Product '"+product.getProductName()+"' added Successfully"
-                ,HttpStatus.OK);
+        return new ResponseEntity<>("{\"message\":\"Product Added Successfully\"}",HttpStatus.OK);
     }
 
 

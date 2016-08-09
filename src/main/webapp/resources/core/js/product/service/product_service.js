@@ -6,10 +6,10 @@ productApp.factory('ProductDetailsService',['$http', '$q',function($http,$q){
         getProductDetails:function(productId){
             console.log('From Service: '+productId);
             var deferred = $q.defer();
-            $http.get(REST_SERVICE_URI+"/product/get")
+            $http.get(REST_SERVICE_URI+'/product/get')
                 .then(
                 function (response) {
-                    deferred.resolve(response.data);
+                    deferred.resolve(response);
                 },
                 function(errResponse){
                     console.error('Error while fetching Products');
@@ -21,10 +21,11 @@ productApp.factory('ProductDetailsService',['$http', '$q',function($http,$q){
         addProduct:function(product){
             var deferred = $q.defer();
             console.log("prod: "+product.productId+":"+product.productName)
-            $http.post(REST_SERVICE_URI+"/product/add",product)
+            $http.post(REST_SERVICE_URI+'/product/add',product)
                 .then(
                 function (response) {
-                    deferred.resolve(response.data);
+                    console.log("response: " + response)
+                    deferred.resolve(response);
                 },
                 function(errResponse){
                     console.error('Service: Error while fetching Products');

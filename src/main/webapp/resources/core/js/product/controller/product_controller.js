@@ -1,7 +1,6 @@
 'use strict';
 productApp.controller('ProductController',function($scope,ProductDetailsService)
 {
-    $scope.name = 'chetan';
     $scope.getProductDetails = function(){
         console.log('====>>> From Controller: ');
         ProductDetailsService.getProductDetails()
@@ -20,8 +19,8 @@ productApp.controller('ProductController',function($scope,ProductDetailsService)
        ProductDetailsService.addProduct({productId: product.productId, productName:product.productName})
        .then(
            function(message) {
-               console.log("message:"+message);
-               $scope.message = message;
+               console.log("message:"+message.data.message);
+               $scope.message = message.data.message;
            },
            function(errResponse){
                console.error('Controller : Error while fetching Products');
