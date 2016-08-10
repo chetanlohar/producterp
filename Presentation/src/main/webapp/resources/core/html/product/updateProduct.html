@@ -1,0 +1,21 @@
+<form name="userForm" method="post" ng-submit="fetchProductDetails(productId)">
+    <p>
+        <lable>Product Id:</lable>
+        <input type="text" name="productId" ng-model="productId" />
+    </p>
+    <p>
+        <input type="submit" value="Fetch"/>
+    </p>
+</form>
+<h3>Product Details: </h3>
+<form name="userForm" method="post" ng-submit="updateProduct(productEntity)">
+    <div ng-if="productEntity">
+        <label>Product Id: </label> <input type="text" ng-model="productEntity.productId" ng-readonly="true"/>
+        <br>
+        <label>Product Name: </label> <input type="text" ng-model="productEntity.productName" />
+        <p>
+            <input type="submit" value="Update"/>
+        </p>
+    </div>
+    <p ng-if="message">{{message}}</p>
+</form>

@@ -9,5 +9,9 @@ productApp.config(function($httpProvider,$routeProvider) {
     $routeProvider.when('/addProduct',{
             templateUrl: '/resources/core/html/product/addProduct.html',
             controller: 'ProductController'
+    }),
+    $routeProvider.when('/updateProduct',{
+            templateUrl: '/resources/core/html/product/updateProduct.html',
+            controller: 'ProductController'
     })
 });

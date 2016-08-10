@@ -1,5 +1,5 @@
 'use strict';
-productApp.factory('ProductDetailsService',['$http', '$q',function($http,$q){
+productApp.factory('ProductDetailsService',['$http', '$q','$log',function($http,$q,$log){
 
     var REST_SERVICE_URI = configOptions.baseUrl; //'http://localhost:7777/product/get'
     return{
@@ -11,7 +11,7 @@ productApp.factory('ProductDetailsService',['$http', '$q',function($http,$q){
                     deferred.resolve(response.data);
                 },
                 function(errResponse){
-                    console.error('Error while fetching Products');
+                    $log.error('Error while fetching Products');
                     deferred.reject(errResponse);
                 }
             );
@@ -19,15 +19,44 @@ productApp.factory('ProductDetailsService',['$http', '$q',function($http,$q){
         },
         addProduct:function(product){
             var deferred = $q.defer();
-            console.log("prod: "+product.productId+":"+product.productName)
+            $log.info("prodName: "+product.productName)
             $http.post(REST_SERVICE_URI+'/product/add',product)
                 .then(
                 function (response) {
-                    console.log("response: " + response)
+                    $log.info("response: " + response)
                     deferred.resolve(response);
                 },
                 function(errResponse){
-                    console.error('Service: Error while fetching Products');
+                    $log.error('Service: Error while fetching Products');
+                    deferred.reject(errResponse);
+                }
+            );
+            return deferred.promise;
+        },
+        fetchProductDetails:function(productId){
+            var deferred = $q.defer();
+            $http.get(REST_SERVICE_URI+'/product/get/'+productId)
+                .then(
+                function (response) {
+                    $log.info("response productName: " + response.data)
+                    deferred.resolve(response.data);
+                },
+                function(errResponse){
+                    $log.error('Service: Error while fetching Product');
+                    deferred.reject(errResponse);
+                }
+            );
+            return deferred.promise;
+        },
+        updateProduct:function(product){
+            var deferred = $q.defer();
+            $http.post(REST_SERVICE_URI+'/product/update',product)
+                .then(
+                function (response) {
+                    deferred.resolve(response);
+                },
+                function(errResponse){
+                    $log.error('Service: Error while fetching Products');
                     deferred.reject(errResponse);
                 }
             );

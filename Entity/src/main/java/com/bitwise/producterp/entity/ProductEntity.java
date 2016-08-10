@@ -1,26 +1,35 @@
 package com.bitwise.producterp.entity;
 
+import javax.persistence.*;
+import java.io.Serializable;
+
 /**
  * Created by chetanlo on 8/8/2016.
  */
 
-public class ProductEntity {
+@Entity
+@Table(name = "tbl_product")
+public class ProductEntity implements Serializable{
 
-    private Integer productId;
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name = "productid")
+    private Long productId;
+    @Column(name = "productname")
     private String productName;
 
     public ProductEntity() {
     }
 
-    public ProductEntity(Integer productId, String productName) {
+    public ProductEntity(Long productId, String productName) {
         this.productName = productName;
         this.productId = productId;
     }
 
-    public Integer getProductId() {
+    public Long getProductId() {
         return productId;
     }
-    public void setProductId(Integer productId) {
+    public void setProductId(Long productId) {
         this.productId = productId;
     }
     public String getProductName() {

@@ -1,5 +1,9 @@
 <br>
 <input type="button" ng-click="getProductDetails()" value="View" />
-<div ng-repeat="product in products">
-    <p>{{product.productId}} {{product.productName}}</p>
+<div ng-if="products">
+    <select ng-model="selectedProduct">
+        <option value="0">Select</option>
+        <option ng-repeat="product in products" value="{{product.productId}}"> {{product.productName}}</option>
+    </select>
+    <p>{{selectedProduct}}</p>
 </div>

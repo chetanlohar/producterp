@@ -1,8 +1,11 @@
 package com.bitwise.producterp.controller;
 
+import com.bitwise.producterp.dto.ProductDTO;
 import com.bitwise.producterp.entity.ProductEntity;
 import com.bitwise.producterp.core.ServiceUrls;
+import com.bitwise.producterp.service.ProductService;
 import com.bitwise.producterp.utility.ErpLogger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,27 +22,39 @@ public class ProductController {
 
     ErpLogger erpLogger = new ErpLogger(ProductController.class);
 
+    @Autowired
+    ProductService productService;
+
     @RequestMapping(value = ServiceUrls.GET_ALL,method = RequestMethod.GET)
-    public @ResponseBody ResponseEntity<List<ProductEntity>> getProductDetails(){
+    public @ResponseBody ResponseEntity<List<ProductDTO>> getProductDetails(){
         erpLogger.info("ProductController --> Get Product Details");
         String str = "{\"ID\":\"2800\"}";
-        List<ProductEntity> l = new ArrayList<ProductEntity>();
-        l.add(new ProductEntity(1,"Samsung"));
-        l.add(new ProductEntity(2,"Apple"));
-        l.add(new ProductEntity(3,"Sony"));
+        List<ProductDTO> l = new ArrayList<ProductDTO>();
+        l.add(new ProductDTO(1l,"Samsung"));
+        l.add(new ProductDTO(2l,"Apple"));
+        l.add(new ProductDTO(3l,"Sony"));
         return new ResponseEntity<>(l,HttpStatus.OK);
     }
 
     @RequestMapping(value = ServiceUrls.ADD, method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
-    public @ResponseBody ResponseEntity<String> addProduct(@RequestBody ProductEntity product){
+    public @ResponseBody ResponseEntity<String> addProduct(@RequestBody ProductDTO product){
         erpLogger.info("=================>>>>>>>>>>>>>>>>>"+ product.toString());
-        return new ResponseEntity<>("{\"message\":\"Product Added Successfully\"}",HttpStatus.OK);
+        String message = productService.addProduct(product);
+        return new ResponseEntity<>("{\"message\":\""+message+"\"}",HttpStatus.OK);
     }
 
+    @RequestMapping(value = ServiceUrls.GET+"{productId}")
+    public @ResponseBody ResponseEntity<ProductEntity> getProductDetailsById(@PathVariable("productId") Long productId){
+        erpLogger.info("product id: "+productId);
+        String message = "product fetch Successfully";
+        ProductEntity productEntity = productService.getProductDetailsById(productId);
+        return new ResponseEntity<>(productEntity,HttpStatus.OK);
+    }
 
-
-
-
-
-
+    @RequestMapping(value = ServiceUrls.UPDATE, method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+    public @ResponseBody ResponseEntity<String> updateProduct(@RequestBody ProductDTO product){
+        erpLogger.info("=================>>>>>>>>>>>>>>>>>"+ product.toString());
+        String message = productService.updateProduct(product);
+        return new ResponseEntity<>("{\"message\":\""+message+"\"}",HttpStatus.OK);
+    }
 }

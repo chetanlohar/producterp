@@ -10,6 +10,24 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>ProductERP-Service</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>ProductERP</groupId>
+            <artifactId>ProductERP-Utility</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>ProductERP</groupId>
+            <artifactId>ProductERP-Entity</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>ProductERP</groupId>
+            <artifactId>ProductERP-Integration</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
 
+
+    </dependencies>
 
 </project>
