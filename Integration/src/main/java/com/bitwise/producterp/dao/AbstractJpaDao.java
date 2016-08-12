@@ -3,6 +3,7 @@ package com.bitwise.producterp.dao;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by chetanlo on 8/10/2016.
@@ -28,6 +29,11 @@ public abstract class AbstractJpaDao<T extends Serializable>  {
 
     public T find(Long Id){
         return entityManager.find(clazz,Id);
+    }
+
+    public List<T> findAll(){
+        return entityManager.createQuery("from " + clazz.getName())
+                .getResultList();
     }
 
     public void merge(T entity){

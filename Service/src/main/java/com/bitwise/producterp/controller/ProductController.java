@@ -28,12 +28,7 @@ public class ProductController {
     @RequestMapping(value = ServiceUrls.GET_ALL,method = RequestMethod.GET)
     public @ResponseBody ResponseEntity<List<ProductDTO>> getProductDetails(){
         erpLogger.info("ProductController --> Get Product Details");
-        String str = "{\"ID\":\"2800\"}";
-        List<ProductDTO> l = new ArrayList<ProductDTO>();
-        l.add(new ProductDTO(1l,"Samsung"));
-        l.add(new ProductDTO(2l,"Apple"));
-        l.add(new ProductDTO(3l,"Sony"));
-        return new ResponseEntity<>(l,HttpStatus.OK);
+        return new ResponseEntity<>(productService.getAllProductDetails(),HttpStatus.OK);
     }
 
     @RequestMapping(value = ServiceUrls.ADD, method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
@@ -44,11 +39,11 @@ public class ProductController {
     }
 
     @RequestMapping(value = ServiceUrls.GET+"{productId}")
-    public @ResponseBody ResponseEntity<ProductEntity> getProductDetailsById(@PathVariable("productId") Long productId){
+    public @ResponseBody ResponseEntity<ProductDTO> getProductDetailsById(@PathVariable("productId") Long productId){
         erpLogger.info("product id: "+productId);
         String message = "product fetch Successfully";
-        ProductEntity productEntity = productService.getProductDetailsById(productId);
-        return new ResponseEntity<>(productEntity,HttpStatus.OK);
+        ProductDTO productDTO = productService.getProductDetailsById(productId);
+        return new ResponseEntity<>(productDTO,HttpStatus.OK);
     }
 
     @RequestMapping(value = ServiceUrls.UPDATE, method = RequestMethod.POST, consumes = "application/json", produces = "application/json")

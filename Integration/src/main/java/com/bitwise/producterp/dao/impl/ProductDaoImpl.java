@@ -5,6 +5,8 @@ import com.bitwise.producterp.dao.ProductDao;
 import com.bitwise.producterp.entity.ProductEntity;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * Created by chetanlo on 8/10/2016.
  */
@@ -28,5 +30,11 @@ public class ProductDaoImpl extends AbstractJpaDao<ProductEntity> implements Pro
     public String updateProduct(ProductEntity productEntity) {
         merge(productEntity);
         return "Product Updated Successfully";
+    }
+
+    @Override
+    public List<ProductEntity> getAllProductDetails() {
+        setClazz(ProductEntity.class);
+        return findAll();
     }
 }

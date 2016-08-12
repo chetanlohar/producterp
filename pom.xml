@@ -16,7 +16,8 @@
   <url>http://maven.apache.org</url>
   <properties>
       <jdk.version>1.8</jdk.version>
-      <spring.version>3.2.13.RELEASE</spring.version>
+      <spring.version>4.3.1.RELEASE</spring.version>
+      <hibernate.version>4.0.1.Final</hibernate.version>
       <jstl.version>1.2</jstl.version>
   </properties>
   <build>
@@ -26,8 +27,8 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>2.3.2</version>
         <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
+          <source>${jdk.version}</source>
+          <target>${jdk.version}</target>
         </configuration>
       </plugin>
 
@@ -55,19 +56,19 @@
       <dependency>
           <groupId>org.springframework</groupId>
           <artifactId>spring-webmvc</artifactId>
-          <version>4.3.1.RELEASE</version>
+          <version>${spring.version}</version>
       </dependency>
 
       <dependency>
           <groupId>org.springframework</groupId>
           <artifactId>spring-tx</artifactId>
-          <version>4.3.1.RELEASE</version>
+          <version>${spring.version}</version>
       </dependency>
 
       <dependency>
           <groupId>org.springframework</groupId>
           <artifactId>spring-orm</artifactId>
-          <version>4.1.4.RELEASE</version>
+          <version>${spring.version}</version>
       </dependency>
 
 
@@ -94,7 +95,7 @@
       <dependency>
           <groupId>org.hibernate</groupId>
           <artifactId>hibernate-core</artifactId>
-          <version>4.0.1.Final</version>
+          <version>${hibernate.version}</version>
       </dependency>
       <dependency>
           <groupId>org.hibernate</groupId>
@@ -104,7 +105,7 @@
       <dependency>
           <groupId>org.hibernate.common</groupId>
           <artifactId>hibernate-commons-annotations</artifactId>
-          <version>4.0.1.Final</version>
+          <version>${hibernate.version}</version>
           <classifier>tests</classifier>
       </dependency>
 
@@ -116,7 +117,7 @@
       <dependency>
           <groupId>org.hibernate</groupId>
           <artifactId>hibernate-entitymanager</artifactId>
-          <version>4.0.1.Final</version>
+          <version>${hibernate.version}</version>
       </dependency>
 
       <!--MySQL Connector-->
@@ -150,6 +151,12 @@
           <version>1.0.2</version>
       </dependency>
 
+      <!--Dozer Mapping for Transfer Objects-->
 
+      <dependency>
+          <groupId>net.sf.dozer</groupId>
+          <artifactId>dozer</artifactId>
+          <version>5.5.1</version>
+      </dependency>
   </dependencies>
 </project>
