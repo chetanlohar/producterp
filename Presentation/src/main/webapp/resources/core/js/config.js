@@ -1,5 +1,5 @@
 configOptions = {
 
-  baseUrl:'http://bi-user1:7777/'
+  baseUrl:'http://localhost:7777/'
 
 }

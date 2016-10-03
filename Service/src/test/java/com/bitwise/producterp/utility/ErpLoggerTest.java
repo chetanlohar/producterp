@@ -30,7 +30,7 @@ public class ErpLoggerTest {
         {
             erpLogger.error(e);
         }
-        File folder = new File("./Logs");
+        File folder = new File("/Logs");
         File[] listOfFiles = folder.listFiles();
         for(int i=0;i<listOfFiles.length;i++)
             org.junit.Assert.assertTrue(listOfFiles[i].exists());

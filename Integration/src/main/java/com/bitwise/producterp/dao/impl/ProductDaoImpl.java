@@ -2,9 +2,11 @@ package com.bitwise.producterp.dao.impl;
 
 import com.bitwise.producterp.dao.AbstractJpaDao;
 import com.bitwise.producterp.dao.ProductDao;
+import com.bitwise.producterp.entity.ProductCategoryEntity;
 import com.bitwise.producterp.entity.ProductEntity;
 import org.springframework.stereotype.Repository;
 
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -35,6 +37,12 @@ public class ProductDaoImpl extends AbstractJpaDao<ProductEntity> implements Pro
     @Override
     public List<ProductEntity> getAllProductDetails() {
         setClazz(ProductEntity.class);
-        return findAll();
+        List<ProductEntity> products = findAll();
+        for(ProductEntity p: products) {
+            System.out.println("ProductName: "+p.getProductName() + " : =============>>>>>>>>>>>>");
+            for(ProductCategoryEntity pc: p.getProductCategoryEntityList())
+                System.out.println(pc.getProductEntity().getProductName()+":"+pc.getCategoryEntity().getCategoryName());
+        }
+        return products;
     }
 }

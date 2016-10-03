@@ -2,6 +2,7 @@ package com.bitwise.producterp.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 /**
  * Created by chetanlo on 8/8/2016.
@@ -17,6 +18,9 @@ public class ProductEntity implements Serializable{
     private Long productId;
     @Column(name = "productname")
     private String productName;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "productEntity")
+    private Set<ProductCategoryEntity> productCategoryEntityList;
 
     public ProductEntity() {
     }
@@ -38,6 +42,12 @@ public class ProductEntity implements Serializable{
     public void setProductName(String productName) {
         this.productName = productName;
     }
+    public Set<ProductCategoryEntity> getProductCategoryEntityList() {
+        return productCategoryEntityList;
+    }
+    public void setProductCategoryEntityList(Set<ProductCategoryEntity> productCategoryEntityList) {
+        this.productCategoryEntityList = productCategoryEntityList;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -54,11 +64,13 @@ public class ProductEntity implements Serializable{
         result = 31 * result + (productName != null ? productName.hashCode() : 0);
         return result;
     }
+
     @Override
     public String toString() {
         return "ProductEntity{" +
                 "productId=" + productId +
                 ", productName='" + productName + '\'' +
+                ", productCategoryEntityList=" + productCategoryEntityList +
                 '}';
     }
 }

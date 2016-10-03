@@ -1,20 +1,42 @@
 <!DOCTYPE html>
 <html lang="en-US" ng-app="productApp">
+
 <script src="/resources/core/js/config.js"></script>
 <script src="/resources/core/js/common/angular.js"></script>
 <script src="/resources/core/js/common/angular-route.min.js"></script>
 <script src="/resources/core/js/common/angular-resource.js"></script>
 <script src="/resources/core/js/product/product_app.js"></script>
 <script src="/resources/core/js/product/controller/product_controller.js"></script>
+<script src="/resources/core/js/product/controller/menu_controller.js"></script>
+<script src="/resources/core/js/directives/sidebarDirective.js"></script>
 <script src="/resources/core/js/product/service/product_service.js"></script>
 <head>
     <title>Bitwise</title>
+    <link rel="stylesheet" href="/resources/core/css/style.css">
 </head>
-<body>
+<body ng-app>
     <h1>Product Management</h1>
-    <a href="#/addProduct">Add Product</a>
-    <a href="#/viewProduct">View Products</a>
-    <a href="#/updateProduct">Update Product</a>
+    <nav>
+        <a href="#/addProduct">Add Product</a>
+        <a href="#/viewProduct">View Products</a>
+        <a href="#/updateProduct">Update Product</a>
+    </nav>
     <ng-view></ng-view>
 </body>
+<!--<body ng-app>
+<div>
+    <h1>Product Management</h1>
+</div>
+<div class="container">
+    <div ng-controller="MenuController" class="sidebar" sidebar-directive="state">
+        <a href="#" id="navigation-toggle" ng-click="toggleState()">Navigation</a>
+        <ul class="navigation">
+            <li class="navigation-items"> <a href="#/addProduct">Add Product</a> </li>
+            <li class="navigation-items"> <a href="#/viewProduct">View Products</a> </li>
+            <li class="navigation-items"> <a href="#/updateProduct">Update Product</a> </li>
+        </ul>
+    </div>
+    <ng-view></ng-view>
+</div>
+</body>-->
 </html>
