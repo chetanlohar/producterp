@@ -1,5 +1,14 @@
 <web-app >
   <display-name>Product ERP Web Application</display-name>
+  
+  <!-- <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:spring/application-context.xml</param-value>
+    </context-param> -->
 
   <servlet>
     <servlet-name>spring-web</servlet-name>
