@@ -1,11 +1,9 @@
 package com.bitwise.producterp.utility;
 
+import java.io.File;
+
 import org.junit.Before;
 import org.junit.Test;
-
-import com.bitwise.producterp.utility.ErpLogger;
-
-import java.io.File;
 
 /**
  * Created by chetanlo on 8/8/2016.
@@ -17,7 +15,6 @@ public class ErpLoggerTest {
     @Before
     public void initializer(){
         erpLogger=new ErpLogger(ErpLoggerTest.class);
-
     }
     @Test
     public void itShouldAbleToCheckTheFunctionalityOfBwLogger(){
@@ -32,7 +29,7 @@ public class ErpLoggerTest {
         {
             erpLogger.error(e);
         }
-        File folder = new File("/Logs");
+        File folder = new File("../Logs");
         File[] listOfFiles = folder.listFiles();
         for(int i=0;i<listOfFiles.length;i++)
             org.junit.Assert.assertTrue(listOfFiles[i].exists());
